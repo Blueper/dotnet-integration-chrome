@@ -46,10 +46,10 @@ namespace setup_dotnet
                 })
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    options.Authority = Configuration["setup_dotnet:Authority"];
+                    options.Authority = Configuration["setup-dotnet:Authority"];
 
-                    options.ClientId = Configuration["setup_dotnet:ClientId"];
-                    options.ClientSecret = Configuration["setup_dotnet:ClientSecret"];
+                    options.ClientId = Configuration["setup-dotnet:ClientId"];
+                    options.ClientSecret = Configuration["setup-dotnet:ClientSecret"];
 
                     options.ResponseType = "code";
                     options.RequireHttpsMetadata = false;
