@@ -1,25 +1,42 @@
+using SampleApp; //
+using Microsoft.AspNetCore.Authentication;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages();
+// // Add services to the container.
+// builder.Services.AddRazorPages();
+
+var startup = new Startup(builder.Configuration); //
+startup.ConfigureServices(builder.Services); //
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+// if (!app.Environment.IsDevelopment())
+// {
+//     app.UseExceptionHandler("/Error");
+//     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+//     app.UseHsts();
+// }
+
+// app.UseHttpsRedirection();
+// app.UseStaticFiles();
+
+// app.UseRouting();
+
+/**/
+// Add this before any other middleware that might write cookies
+app.UseCookiePolicy(new CookiePolicyOptions
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
+    Secure = CookieSecurePolicy.Always
+});
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
+// app.UseAuthorization();
 
-app.UseRouting();
+// app.MapRazorPages();
 
-app.UseAuthorization();
+startup.Configure(app, builder.Environment); //
 
-app.MapRazorPages();
 
 app.Run();
+

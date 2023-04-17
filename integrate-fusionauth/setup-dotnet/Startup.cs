@@ -13,7 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Logging;
 
-namespace setup_dotnet
+namespace SampleApp
 {
     public class Startup
     {
@@ -37,7 +37,7 @@ namespace setup_dotnet
             })
                 .AddCookie("cookie", options =>
                 {
-                    options.Cookie.Name = "mycookie";
+                    options.Cookie.Name = Configuration["SampleApp:CookieName"];
 
                     options.Events.OnSigningOut = async e =>
                     {
@@ -46,10 +46,10 @@ namespace setup_dotnet
                 })
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    options.Authority = Configuration["setup_dotnet:Authority"];
+                    options.Authority = Configuration["SampleApp:Authority"];
 
-                    options.ClientId = Configuration["setup_dotnet:ClientId"];
-                    options.ClientSecret = Configuration["setup_dotnet:ClientSecret"];
+                    options.ClientId = Configuration["SampleApp:ClientId"];
+                    options.ClientSecret = Configuration["SampleApp:ClientSecret"];
 
                     options.ResponseType = "code";
                     options.RequireHttpsMetadata = false;
