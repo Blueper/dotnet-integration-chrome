@@ -60,7 +60,7 @@ namespace setup
 		    Application application = new Application();
 		    application.oauthConfiguration = new OAuth2Configuration();
 		    application.oauthConfiguration.authorizedRedirectURLs = new List<string>();
-		    application.oauthConfiguration.authorizedRedirectURLs.Add("http://localhost:8080/login/oauth2/code/fusionauth");
+		    application.oauthConfiguration.authorizedRedirectURLs.Add("http://localhost:5000/signin-oidc");
 		    application.oauthConfiguration.requireRegistration = true;
 
 		    application.oauthConfiguration.enabledGrants = new List<GrantType> {GrantType.authorization_code, GrantType.refresh_token};
