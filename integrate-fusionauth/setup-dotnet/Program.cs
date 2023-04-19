@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using SampleApp; //
 using Microsoft.AspNetCore.Authentication;
 
@@ -38,19 +37,6 @@ app.UseCookiePolicy(new CookiePolicyOptions
 
 startup.Configure(app, builder.Environment); //
 
-=======
-using Microsoft.AspNetCore.Authentication;
-using setup_dotnet;
-
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-var startup = new Startup(builder.Configuration);
-startup.ConfigureServices(builder.Services);
-
-var app = builder.Build();
-startup.Configure(app, builder.Environment);
->>>>>>> 4583da1234f3b1af22b71fae9966389ba9a060a4
 
 app.Run();
 

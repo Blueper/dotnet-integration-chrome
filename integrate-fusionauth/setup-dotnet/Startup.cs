@@ -27,6 +27,12 @@ namespace SampleApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAntiforgery(options =>
+            {
+                options.Cookie.SameSite = SameSiteMode.None;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+            });
+
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
             services.AddRazorPages();
 
@@ -46,17 +52,10 @@ namespace SampleApp
                 })
                 .AddOpenIdConnect("oidc", options =>
                 {
-<<<<<<< HEAD
                     options.Authority = Configuration["SampleApp:Authority"];
 
                     options.ClientId = Configuration["SampleApp:ClientId"];
                     options.ClientSecret = Configuration["SampleApp:ClientSecret"];
-=======
-                    options.Authority = Configuration["setup-dotnet:Authority"];
-
-                    options.ClientId = Configuration["setup-dotnet:ClientId"];
-                    options.ClientSecret = Configuration["setup-dotnet:ClientSecret"];
->>>>>>> 4583da1234f3b1af22b71fae9966389ba9a060a4
 
                     options.ResponseType = "code";
                     options.RequireHttpsMetadata = false;

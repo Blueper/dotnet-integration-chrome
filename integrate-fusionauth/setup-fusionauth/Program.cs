@@ -64,7 +64,7 @@ namespace setup
 		    application.oauthConfiguration.requireRegistration = true;
 
 		    application.oauthConfiguration.enabledGrants = new List<GrantType> {GrantType.authorization_code, GrantType.refresh_token};
-		    application.oauthConfiguration.logoutURL = "http://localhost:8080/logout";
+		    application.oauthConfiguration.logoutURL = "http://localhost:5000";
 		    application.oauthConfiguration.proofKeyForCodeExchangePolicy = ProofKeyForCodeExchangePolicy.Required;
 		    application.name = "DotNetExampleApp";
 
